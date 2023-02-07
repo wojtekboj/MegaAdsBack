@@ -1,5 +1,4 @@
 import {AdRecord} from "../records/ad.record";
-import exp from "constants";
 
 const defaultObj = {
     name: 'Test Name',
