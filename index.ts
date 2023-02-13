@@ -1,4 +1,4 @@
-import express, { json } from 'express';
+import express, {json, Router} from 'express';
 import cors from 'cors';
 import 'express-async-errors';
 import {handleError} from "./utils/errors";
@@ -14,9 +14,13 @@ app.use(json());
 app.use(rateLimit({
     windowMs: 5 * 60 * 1000,
     max: 100,
-}))
+}));
 
-app.use('/ad', adRouter);
+const router = Router();
+
+router.use('/ad', adRouter);
+
+app.use('/api', router);
 
 app.use(handleError);
 app.listen(3001, '0.0.0.0', () => {
